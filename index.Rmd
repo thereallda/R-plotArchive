@@ -1,0 +1,28 @@
+--- 
+title: "R Plot Archive"
+author: "Dean Li"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: "This is a bookdown for R-based plot archive."
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Introduction {-}
+
+This is a simple book about how to create basic plot in R language and also have some modification of the basic plot for better visualization. 
+
+**Motivation: **
+
+- To better organized the code for plot
+
+- Easy access with website
+
+- To practice the bookdown
+
+
+

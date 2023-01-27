@@ -1,0 +1,70 @@
+# Basic
+
+In this book, we mainly focus on ggplot2 for generating plots.
+
+Here, we briefly introduce the basic grammar of ggplot2.
+
+> This chapter is mainly adapted from the book *R for Data Science* (<https://r4ds.had.co.nz/data-visualisation.html>).
+
+## Prerequisites
+
+Install the ggplot2 and tidyverse package
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+install.packages("tidyverse")
+```
+
+Load the packages. We use the `mpg` dataset for illustration.
+
+```{r, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(tidyverse)
+
+data("mpg")
+mpg
+```
+
+## Creating a ggplot
+
+We use scatter plot (`geom_point`) to plot `displ` on x-axis and `hwy` on y-axis:
+
+```{r}
+# scatter plot 
+# hwy：highway miles per gallon
+# displ：engine displacement, in litres
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+In ggplot2, we use the `data` argument to specify the dataset that we want to plot, and assign variables inside `aes()` function, such as `mapping = aes(x = displ, y = hwy)` .
+
+To create different plot, we use the `geom_*` function, such as scatter plot (`geom_point`) and barplot (`geom_bar`). We will go thorough the basic plot types in following chapters.
+
+## Aesthetic mappings
+
+Beside plotting the data, we can assign additional features to point, such as color, size and shape. In ggplot, those properties are called as **aesthetic**.
+
+*For example, you can map the colors of your points to the `class` variable to reveal the class of each car.*
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+Or size of the point
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+```
+
+> Common aesthetic arguments includes:
+>
+> `color`/`colour` and `fill`: for mapping the colors.
+>
+> `shape`: for mapping the shape of the point.
+>
+> `alpha`: for mapping the transparency.
+>
+> `size`: for mapping the size.

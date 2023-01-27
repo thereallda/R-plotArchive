@@ -1,0 +1,68 @@
+/******************************************************************************
+CSS from "https://brad-cannell.github.io/r_notes/bookdown-quick-start.html"
+******************************************************************************/
+
+/*
+CSS that came with bookdown
+*/
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+/* 
+Font Styles
+*/
+.large-bold {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.red-text {
+  color: red;
+}
+
+.code {
+  color: #0365C0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+
+/*
+Note styles
+*/
+.note {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: #f0f7fb;
+  border: solid 1px #3498db;
+  border-radius: 6px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 15px 15px;
+}
+
+.warning {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: #FEFBEA;
+  border: solid 1px #F2E394;
+  border-radius: 6px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 15px 15px;
+}

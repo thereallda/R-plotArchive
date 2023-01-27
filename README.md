@@ -1,3 +1,4 @@
-# Plot Archive
+# R Plot Archive
 
-This repo contains the common plots in `ggplot2` style. 
+The basic and advanced plot in R language. 
+
