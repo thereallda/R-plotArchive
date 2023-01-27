@@ -1,0 +1,6 @@
+"0","iris$Mark <- ifelse(iris$Species == ""setosa"" & iris$Sepal.Length > 5.5, "
+"0","                    ""M"", """")"
+"0",""
+"0","ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + "
+"0","  geom_point(aes(color=Species)) +"
+"0","  geom_text(aes(label=Mark))"

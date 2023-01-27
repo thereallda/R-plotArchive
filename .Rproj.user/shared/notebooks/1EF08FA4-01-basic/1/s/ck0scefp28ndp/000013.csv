@@ -1,0 +1,6 @@
+"0","p1 <- ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + "
+"0","  geom_boxplot()"
+"0","p2 <- ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + "
+"0","  geom_boxplot() +"
+"0","  coord_flip()"
+"0","p1 + p2"

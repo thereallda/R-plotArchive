@@ -1,0 +1,14 @@
+h1:basic Basic
+h2:useful-resources Useful resources
+h2:prerequisites Prerequisites
+h2:creating-a-ggplot Creating a ggplot
+h2:aesthetic-mappings Aesthetic mappings
+h2:facets Facets
+h2:geometric-objects Geometric objects
+h2:statistical-transformation Statistical transformation
+h2:position-adjustment Position adjustment
+h2:coordinate-systems Coordinate systems
+h3:coord_flip coord_flip()
+h3:coord_polar coord_polar()
+h2:summary Summary
+

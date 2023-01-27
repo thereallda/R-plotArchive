@@ -1,0 +1,45 @@
+# Scatter
+
+In this chapter, we introduce the scatter plot in ggplot2 style.
+
+## basic scatter
+
+We use the `iris` dataset for illustration.
+
+```{r}
+library(ggplot2)
+
+data(iris)
+head(iris)
+```
+
+basic scatter plot
+
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
+
+geom_point()
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
+    geom_point()
+```
+
+## With color
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
+    geom_point(aes(color=Species))
+```
+
+## With selected text label
+
+We can label selected points, such as those setosa with sepal length \> 5.5
+
+```{r}
+iris$Mark <- ifelse(iris$Species == "setosa" & iris$Sepal.Length > 5.5, 
+                    "M", "")
+
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
+  geom_point(aes(color=Species)) +
+  geom_text(aes(label=Mark))
+```
