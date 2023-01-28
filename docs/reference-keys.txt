@@ -14,4 +14,11 @@ summary
 scatter
 basic-scatter
 with-color
+change-color
 with-selected-text-label
+barplot
+basic-barplot
+with-color-1
+adjust-position
+horizontal-barplot
+circular-barplot

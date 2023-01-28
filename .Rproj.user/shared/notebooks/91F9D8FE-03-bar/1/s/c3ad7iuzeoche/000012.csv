@@ -1,0 +1,3 @@
+"0","df2 <- diamonds %>% "
+"0","  count(cut, clarity)"
+"0","df2"

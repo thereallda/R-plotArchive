@@ -1,0 +1,85 @@
+# Barplot
+
+In this chapter, we introduce the barplot in ggplot2 style.
+
+## basic barplot 
+
+We use `diamonds` dataset for illustration.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+data("diamonds")
+diamonds
+```
+
+Count the number of diamonds in each cut group.
+
+```{r}
+df1 <- diamonds %>% 
+  count(cut)
+df1
+```
+
+We use `stat="identity"` mode to generate barplot
+
+```{r}
+ggplot(df1, aes(x=cut, y=n)) +
+  geom_bar(stat="identity")
+```
+
+
+## With color
+
+```{r}
+ggplot(df1, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=cut), stat="identity")
+```
+
+Using `fill` as grouping variable
+
+```{r}
+df2 <- diamonds %>% 
+  count(cut, clarity)
+df2
+```
+
+```{r}
+ggplot(df2, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=clarity), stat="identity", position="identity")
+```
+
+### adjust position
+
+There are two other more position options: "fill" and "dodge"
+
+```{r, fig.width=6, fig.height=4}
+p1 <- ggplot(df2, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=clarity), stat="identity", position="fill")
+
+p2 <- ggplot(df2, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=clarity), stat="identity", position="dodge")
+
+p1 + p2
+```
+
+## Horizontal barplot
+
+```{r}
+ggplot(df1, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=cut), stat="identity") +
+  coord_flip()
+```
+
+## Circular barplot
+
+
+```{r}
+ggplot(df1, aes(x=cut, y=n)) +
+  geom_bar(aes(fill=cut), stat="identity", width=1) +
+  theme(aspect.ratio = 1) +
+  labs(x = NULL, y = NULL) +
+  coord_polar()
+```

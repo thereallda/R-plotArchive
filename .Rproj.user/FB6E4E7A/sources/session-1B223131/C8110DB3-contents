@@ -15,10 +15,6 @@ head(iris)
 
 basic scatter plot
 
-ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
-
-geom_point()
-
 ```{r}
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
     geom_point()
@@ -29,6 +25,16 @@ ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +
 ```{r}
 ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
     geom_point(aes(color=Species))
+```
+
+### Change color
+
+you can manually change the color with `scale_color_manual`, noted the number of color should equals to the number of groups (3 in this case).
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
+  geom_point(aes(color=Species)) +
+  scale_color_manual(values=c("black", "blue", "red"))
 ```
 
 ## With selected text label

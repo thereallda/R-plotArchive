@@ -23,7 +23,7 @@
 <meta name="author" content="Dean Li" />
 
 
-<meta name="date" content="2023-01-27" />
+<meta name="date" content="2023-01-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="basic.html"/>
-
+<link rel="next" href="barplot.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -157,8 +157,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="scatter.html"><a href="scatter.html"><i class="fa fa-check"></i><b>2</b> Scatter</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="scatter.html"><a href="scatter.html#basic-scatter"><i class="fa fa-check"></i><b>2.1</b> basic scatter</a></li>
-<li class="chapter" data-level="2.2" data-path="scatter.html"><a href="scatter.html#with-color"><i class="fa fa-check"></i><b>2.2</b> With color</a></li>
+<li class="chapter" data-level="2.2" data-path="scatter.html"><a href="scatter.html#with-color"><i class="fa fa-check"></i><b>2.2</b> With color</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="scatter.html"><a href="scatter.html#change-color"><i class="fa fa-check"></i><b>2.2.1</b> Change color</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="scatter.html"><a href="scatter.html#with-selected-text-label"><i class="fa fa-check"></i><b>2.3</b> With selected text label</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="barplot.html"><a href="barplot.html"><i class="fa fa-check"></i><b>3</b> Barplot</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="barplot.html"><a href="barplot.html#basic-barplot"><i class="fa fa-check"></i><b>3.1</b> basic barplot</a></li>
+<li class="chapter" data-level="3.2" data-path="barplot.html"><a href="barplot.html#with-color-1"><i class="fa fa-check"></i><b>3.2</b> With color</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="barplot.html"><a href="barplot.html#adjust-position"><i class="fa fa-check"></i><b>3.2.1</b> adjust position</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="barplot.html"><a href="barplot.html#horizontal-barplot"><i class="fa fa-check"></i><b>3.3</b> Horizontal barplot</a></li>
+<li class="chapter" data-level="3.4" data-path="barplot.html"><a href="barplot.html#circular-barplot"><i class="fa fa-check"></i><b>3.4</b> Circular barplot</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -197,8 +210,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>basic scatter plot</p>
-<p>ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) +</p>
-<p>geom_point()</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="scatter.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width)) <span class="sc">+</span> </span>
 <span id="cb32-2"><a href="scatter.html#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="R-Plot-Archive_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
@@ -208,17 +219,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="scatter.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width)) <span class="sc">+</span> </span>
 <span id="cb33-2"><a href="scatter.html#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species))</span></code></pre></div>
 <p><img src="R-Plot-Archive_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div id="change-color" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Change color<a href="scatter.html#change-color" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>you can manually change the color with <code>scale_color_manual</code>, noted the number of color should equals to the number of groups (3 in this case).</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="scatter.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width)) <span class="sc">+</span> </span>
+<span id="cb34-2"><a href="scatter.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species)) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="scatter.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
+<p><img src="R-Plot-Archive_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
 </div>
 <div id="with-selected-text-label" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> With selected text label<a href="scatter.html#with-selected-text-label" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can label selected points, such as those setosa with sepal length &gt; 5.5</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="scatter.html#cb34-1" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Mark <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="fl">5.5</span>, </span>
-<span id="cb34-2"><a href="scatter.html#cb34-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;M&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb34-3"><a href="scatter.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="scatter.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width)) <span class="sc">+</span> </span>
-<span id="cb34-5"><a href="scatter.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species)) <span class="sc">+</span></span>
-<span id="cb34-6"><a href="scatter.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Mark))</span></code></pre></div>
-<p><img src="R-Plot-Archive_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="scatter.html#cb35-1" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Mark <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="fl">5.5</span>, </span>
+<span id="cb35-2"><a href="scatter.html#cb35-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;M&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb35-3"><a href="scatter.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="scatter.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width)) <span class="sc">+</span> </span>
+<span id="cb35-5"><a href="scatter.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species)) <span class="sc">+</span></span>
+<span id="cb35-6"><a href="scatter.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Mark))</span></code></pre></div>
+<p><img src="R-Plot-Archive_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -227,8 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="basic.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="basic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="barplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

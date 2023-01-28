@@ -1,0 +1,3 @@
+"0","df1 <- diamonds %>% "
+"0","  count(cut)"
+"0","df1"

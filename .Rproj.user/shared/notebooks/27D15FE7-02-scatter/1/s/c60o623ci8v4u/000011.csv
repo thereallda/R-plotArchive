@@ -1,0 +1,3 @@
+"0","ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width)) + "
+"0","  geom_point(aes(color=Species)) +"
+"0","  scale_color_manual(values=c(""black"", ""blue"", ""red""))"

@@ -1,0 +1,3 @@
+"0","ggplot(df1, aes(x=cut, y=n)) +"
+"0","  geom_bar(aes(fill=cut), stat=""identity"") +"
+"0","  coord_flip()"
