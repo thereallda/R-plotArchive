@@ -1,9 +1,0 @@
-book_filename: "R Plot Archive"
-repo: https://github.com/thereallda/R-plotArchive
-output_dir: docs
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: ""
-new_session: no
-rmd_subdir: ["chapters"]

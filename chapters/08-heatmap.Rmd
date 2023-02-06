@@ -1,0 +1,95 @@
+# Heatmap
+
+In this chapter, we introduce the heatmap in ggplot2, pheatmap and ComplexHeatmap styles. 
+
+Install related packages 
+
+```{r, eval=FALSE}
+install.packages(c("ggplot2","pheatmap","ComplexHeatmap"))
+```
+
+Load packages and create dummy data
+
+```{r,warning=FALSE,message=FALSE}
+library(ggplot2)
+library(pheatmap)
+library(ComplexHeatmap)
+library(paintingr) # for generation of color palettes
+
+# Dummy data
+x <- LETTERS[1:20]
+y <- paste0("var", seq(1,20))
+dum.data <- expand.grid(X=x, Y=y)
+dum.data$Z <- seq(1,20)+runif(400, 0, 5)
+
+head(dum.data)
+```
+
+## ggplot2 
+
+Basic heatmap in ggplot2 style (`geom_tile`)
+
+```{r}
+# Heatmap 
+pal <- paint_palette("Autumn", n=100, type="continuous")
+ggplot(dum.data, aes(X, Y, fill= Z)) + 
+  geom_tile() + 
+  scale_fill_gradientn(colours = pal) + 
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) + 
+  coord_equal() 
+```
+
+## pheatmap
+
+Both pheatmap and ComplexHeatmap require matrix like input
+
+```{r}
+# Dummy data
+set.seed(123)
+dum.mat <- matrix(rnorm(1000), ncol=10)
+
+head(dum.mat)
+```
+
+Create basic pheatmap
+
+```{r}
+pheatmap::pheatmap(dum.mat)
+```
+
+### Control color
+
+```{r}
+pal2 <- paint_palette("Twilight", 100, "continuous")
+pheatmap::pheatmap(dum.mat, color = pal2, border_color = NA)
+```
+
+## ComplexHeatmap
+
+Create basic ComplexHeatmap
+
+```{r}
+ComplexHeatmap::Heatmap(dum.mat, name="mat")
+```
+
+### Control color
+
+Pass vector of colors to change the color
+
+```{r}
+ComplexHeatmap::Heatmap(dum.mat, name="mat", col=paint_palette("Vesuvius"))
+```
+
+Color of ComplexHeatmap can also be modified with a color mapping function.
+
+```{r}
+# generate color mapping function
+col_fun <- circlize::colorRamp2(breaks = seq(-3,3), 
+                                colors = paint_palette("Twilight",7,"continuous"))
+ComplexHeatmap::Heatmap(dum.mat, 
+                        name="mat", 
+                        col=col_fun, 
+                        heatmap_legend_param = list(at = c(-3,-1.5,0,1.5,3)) # control breaks of heatmap legend
+                        )
+```

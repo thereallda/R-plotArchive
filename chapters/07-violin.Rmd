@@ -1,0 +1,35 @@
+# Vilion
+
+In this chapter, we introduce the vilionplot in ggplot2 style.
+
+## basic  
+
+We use `iris` dataset for illustration.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+data("iris")
+head(iris)
+```
+
+
+```{r}
+ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_violin()
+```
+
+## With color or fill
+
+
+```{r}
+p1 <- ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_violin(aes(fill=Species))
+
+p2 <- ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_violin(aes(color=Species))
+
+p1 + p2
+```

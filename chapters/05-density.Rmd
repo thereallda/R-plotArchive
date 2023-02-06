@@ -1,0 +1,45 @@
+# Density
+
+In this chapter, we introduce the density plot in ggplot2 style.
+
+## basic  
+
+We use `diamonds` dataset for illustration.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+data("diamonds")
+diamonds
+```
+
+Density plot can be used to show the distribution of data
+
+```{r}
+ ggplot(diamonds, aes(x=price)) +
+  geom_density(fill="#507991") +
+  theme_classic()
+```
+
+## With color
+
+use `fill` as grouping variable
+
+```{r}
+ ggplot(diamonds, aes(x=price)) +
+  geom_density(aes(fill=cut), alpha=0.6) +
+  theme_classic()
+```
+
+
+## Adding histogram
+
+
+```{r}
+ ggplot(diamonds, aes(x=price)) +
+  geom_histogram(aes(y = ..density..), color=1, fill="white") + 
+  geom_density(fill="#507991", alpha=0.5, color=NA, lwd=1) +
+  theme_classic()
+```

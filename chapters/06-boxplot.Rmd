@@ -1,0 +1,36 @@
+# Boxplot
+
+In this chapter, we introduce the boxplot in ggplot2 style.
+
+## basic  
+
+We use `iris` dataset for illustration.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+data("iris")
+head(iris)
+```
+
+
+```{r}
+ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_boxplot()
+```
+
+
+## With color or fill
+
+
+```{r}
+p1 <- ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_boxplot(aes(fill=Species))
+
+p2 <- ggplot(iris, aes(x=Species, y=Sepal.Length)) +
+  geom_boxplot(aes(color=Species))
+
+p1 + p2
+```

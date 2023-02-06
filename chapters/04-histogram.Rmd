@@ -1,0 +1,53 @@
+# Histogram
+
+In this chapter, we introduce the histogram in ggplot2 style.
+
+## basic  
+
+We use `diamonds` dataset for illustration.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+data("diamonds")
+diamonds
+```
+Histogram can be used to show the distribution of data
+
+```{r}
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram()
+```
+
+
+## control the bin size
+
+The bin size of histogram control the interval of data, which can be adjusted by changing the number of `binwidth` or `bins` in `geom_histogram`
+
+> Detail in https://www.data-to-viz.com/caveat/bin_size.html
+
+```{r, fig.width=10, fig.height=4}
+p1 <- ggplot(diamonds, aes(x=price)) +
+  geom_histogram(binwidth = 10) +
+  labs(title = "binwidth=10")
+
+p2 <- ggplot(diamonds, aes(x=price)) +
+  geom_histogram(binwidth = 100) +
+  labs(title = "binwidth=100")
+
+p3 <- ggplot(diamonds, aes(x=price)) +
+  geom_histogram(binwidth = 1000) +
+  labs(title = "binwidth=1000")
+
+p1 + p2 + p3 + plot_layout(nrow=1) & theme_classic()
+```
+
+## With color 
+
+```{r}
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins = 50, fill="#507991") +
+  theme_classic()
+```

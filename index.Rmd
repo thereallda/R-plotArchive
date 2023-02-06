@@ -25,4 +25,9 @@ This is a simple book about how to create basic plot in R language and also have
 - To practice the bookdown
 
 
+## Useful resources
 
+-   <https://r4ds.had.co.nz/data-visualisation.html>
+-   <https://r-graph-gallery.com/index.html>
+-   https://www.data-to-viz.com/
+-   https://exts.ggplot2.tidyverse.org/gallery/

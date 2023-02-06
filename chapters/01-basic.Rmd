@@ -6,13 +6,6 @@ Here, we briefly introduce the basic grammar of ggplot2.
 
 > This chapter is mainly adapted from the book *R for Data Science* (<https://r4ds.had.co.nz/data-visualisation.html>).
 
-## Useful resources
-
--   <https://r4ds.had.co.nz/data-visualisation.html>
-
--   <https://r-graph-gallery.com/index.html>
-
-
 ## Prerequisites
 
 Install the ggplot2 and tidyverse package
@@ -77,7 +70,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class), color = "blue")
 ```
 
-> Common aesthetic arguments includes:
+> Common aesthetic arguments include:
 >
 > `color`/`colour` and `fill`: for mapping the colors. To be noted, scatter plot only accept `color/colour` for mapping colors.
 >
